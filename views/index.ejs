@@ -10,7 +10,8 @@
     <ul>
         <% logs.forEach(log => { %>
 		<li>
-            <%= log.title %>
+            <a href="logs/<%=log.id%>">  <%= log.title %>
+            </a>
         </li>
         <% }) %>
     </ul>

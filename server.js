@@ -74,6 +74,14 @@ app.post("/logs" , function (req, res){
 
 // Show
 
+app.get("/logs/:id", function (req, res){
+    Log.findById(req.params.id, function (err, foundLog){
+res.render("show.ejs" , {
+log: foundLog
+});
+    });
+});
+
 // Listener
 
 app.listen(port, function(){
