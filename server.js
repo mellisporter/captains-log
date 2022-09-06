@@ -33,6 +33,14 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 
 // Index
 
+app.get("/logs" , function (req, res){
+    Log.find({}, (error, allLogs) => {
+		res.render('index.ejs', {
+			logs: allLogs,
+		});
+	});
+})
+
 // New
 
 app.get("/logs/new" , function (req, res){
@@ -56,9 +64,10 @@ app.post("/logs" , function (req, res){
 	}
 
     Log.create(req.body, (error, createdLog) => {
-        res.send(createdLog);
-        res.redirect('/logs');
+        // res.send(createdLog);
+        res.redirect('/logs');        
     });
+
 })
 
 // Edit
