@@ -8,6 +8,8 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 
+const Log = require('./models/logs');
+
 
 // DATABASE
 
@@ -52,7 +54,11 @@ app.post("/logs" , function (req, res){
 		//if not checked, req.body.completed is undefined
 		req.body.shipIsBroken = false;
 	}
-    res.send(req.body)
+
+    Log.create(req.body, (error, createdLog) => {
+        res.send(createdLog);
+        res.redirect('/logs');
+    });
 })
 
 // Edit
