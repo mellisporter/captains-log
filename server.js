@@ -5,6 +5,8 @@ const app = express();
 const port = 3000;
 require('dotenv').config();
 
+const methodOverride = require("method-override")
+
 
 const mongoose = require('mongoose');
 
@@ -22,6 +24,9 @@ mongoose.connect(process.env.DATABASE_URL, {
 });
 // Body parser middleware: give us access to req.body
 app.use(express.urlencoded({ extended: true }));
+
+
+app.use(methodOverride("_method"));
 
 
 
@@ -48,6 +53,13 @@ app.get("/logs/new" , function (req, res){
 })
 
 // Delete
+
+app.delete("/logs/:id" , (req, res)=>{
+	// res.send("deleting...")
+	Log.findByIdAndRemove(req.params.id, (err, data) => {
+		res.redirect("/logs")
+	})
+})
 
 // Update
 
