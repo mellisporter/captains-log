@@ -84,6 +84,15 @@ app.post("/logs" , function (req, res){
 
 // Edit
 
+app.get("/logs/:id/edit" , (req, res)=>{
+	Log.findById(req.params.id, (error, foundLog)=>{
+		res.render("edit.ejs" , {
+			log: foundLog,
+		})
+	})
+})
+
+
 // Show
 
 app.get("/logs/:id", function (req, res){

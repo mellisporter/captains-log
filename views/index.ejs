@@ -15,6 +15,7 @@
             <form action="/logs/<%=log._id%>?_method=DELETE" method="POST" style="display:inline; margin-left: 17px;">
                 <input type="submit" value="DELETE">
             </form>
+            <a href="/logs/<%=log.id%>/edit">Edit</a>
         </li>
         <% }) %>
     </ul>
