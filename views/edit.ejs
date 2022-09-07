@@ -8,12 +8,12 @@
   </head>
 
   <body>
-    <h1>Edit Book</h1>
+    <h1>Edit Log</h1>
     <form action="/logs/<%=log._id%>?_method=PUT" method="POST">
       <!--  NOTE: the form is pre-populated with values for the server-->
       Title: <input type="text" name="title" value="<%=log.title%>" /><br />
-      Author: <input type="text" name="author" value="<%=log.author%>" /><br />
-      Completed: <input type="checkbox" name="completed" <% if(log.shipIsBroken
+      Entry: <input type="text" name="author" value="<%=log.author%>" /><br />
+      Ship Is Broken: <input type="checkbox" name="completed" <% if(log.shipIsBroken
       === true){ %> checked <% } %> />
       <br />
       <input type="submit" value="Submit Changes" />

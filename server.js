@@ -63,6 +63,20 @@ app.delete("/logs/:id" , (req, res)=>{
 
 // Update
 
+app.put("/logs/:id" , function (req , res){
+	if (req.body.shipIsBroken === "on") {
+		req.body.completed = true
+	} else {
+		req.body.completed = false
+	}
+	
+	Log.findByIdAndUpdate(req.params.id, req.body, {
+		new:true,
+	}, (error, updatedBook) => {
+		res.redirect(`/logs/${req.params.id}`)
+	})
+})
+
 // Create
 
 app.post("/logs" , function (req, res){
